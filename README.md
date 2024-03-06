@@ -1,4 +1,10 @@
-# React + Vite
+#JobChaser project
+
+## React + Vite
+
+### Made by William Boström
+
+- School Project in Chas Academy
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
