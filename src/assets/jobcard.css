@@ -1,0 +1,62 @@
+.joblist {
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 10px;
+  max-width: 800px;
+  margin: 16px;
+  display: grid;
+  grid-template-columns: 0.3fr 1fr auto;
+  grid-row: 1fr 0.5fr;
+  align-items: center;
+}
+
+.job-btns {
+  grid-row: 2;
+  grid-column: span 2;
+  margin-top: -0.3rem;
+
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.joblist h1 {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+.joblist p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.jobgrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.jobstatus {
+  margin-left: 40px;
+}
+
+.jobfact {
+  display: flex;
+}
+
+.postedAt {
+  justify-self: flex-end;
+  margin-right: 20px;
+}
+
+.job-like-btn {
+  cursor: pointer;
+}
+
+.jobstatus {
+  width: 80px;
+  text-align: center;
+  border: 1px solid black;
+}
