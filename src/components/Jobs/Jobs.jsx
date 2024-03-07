@@ -1,32 +1,40 @@
+// import { useState } from "react";
 import jobList from "./randomJobs.js";
 import JobsCard from "./Joblist.jsx";
 
-function CreateJobs(job) {
-  return (
-    <JobsCard
-      key={job.id}
-      company={job.company}
-      img={job.logo}
-      role={job.role}
-      position={job.position}
-      level={job.level}
-      postedAt={job.postedAt}
-      contract={job.contract}
-      location={job.location}
-      languages={job.languages}
-      tools={job.tools}
-    />
-  );
-}
+function CreateJobs() {
+  /*   const [items, setItems] = useState([]);
+  function deleteItem(id) {
+    setItems((prevItems) => {
+      return prevItems.filter((item, index) => {
+        console.log("item");
+        return index !== id;
+      });
+    });
+  } */
 
-function DisplayCards() {
   return (
-    <article>
+    <article className="joblistArticle">
+      <div className="Job">hejhej</div>
+      <div className="Job2"></div>
       {jobList.map((job, index) => (
-        <CreateJobs key={index} {...job} />
+        <JobsCard
+          id={index}
+          key={job.id}
+          company={job.company}
+          img={job.logo}
+          role={job.role}
+          position={job.position}
+          level={job.level}
+          postedAt={job.postedAt}
+          contract={job.contract}
+          location={job.location}
+          languages={job.languages}
+          tools={job.tools}
+        />
       ))}
     </article>
   );
 }
 
-export default DisplayCards;
+export default CreateJobs;

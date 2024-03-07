@@ -28,16 +28,16 @@ function JobsCard(props) {
       <div className="jobgrid">
         <div>
           <div>
-            <JobFact label="Role:" value={props.role} />
+            <JobFact label="Roll:" value={props.role} />
             <JobFact label="Position:" value={props.position} />
             <JobFact label="Level:" value={props.level} />
           </div>
         </div>
         <div>
-          <JobFact label="Location:" value={props.location} />
+          <JobFact label="Plats:" value={props.location} />
           <div>
-            <JobFact label="Languages:" value={props.languages.join(", ")} />
-            <JobFact label="Tools:" value={props.tools.join(", ")} />
+            <JobFact label="Språk:" value={props.languages.join(", ")} />
+            <JobFact label="Verktyg:" value={props.tools.join(", ")} />
           </div>
         </div>
       </div>
@@ -49,7 +49,11 @@ function JobsCard(props) {
         onMouseLeave={() => setMouseOver(false)}
       >
         <img
-          src={isMouseOver || isLiked ? "/liked-heart.svg" : "/like-heart.svg"}
+          src={
+            isMouseOver || isLiked
+              ? "https://jobb.blocket.se/img/huge_heart_hover.svg"
+              : "https://jobb.blocket.se/img/huge_heart_default.svg"
+          }
           alt="Heart"
         />
       </a>
@@ -81,6 +85,8 @@ JobsCard.propTypes = {
   languages: PropTypes.array.isRequired,
   tools: PropTypes.array.isRequired,
   postedAt: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  // onChecked: PropTypes.func.isRequired,
 };
 
 export default JobsCard;

@@ -1,4 +1,4 @@
-import Header from "./components/Heading.jsx";
+import Header from "./components/Header/Heading.jsx";
 import Footer from "./components/Footer.jsx";
 import DisplayCards from "./components/Jobs/Jobs.jsx";
 
