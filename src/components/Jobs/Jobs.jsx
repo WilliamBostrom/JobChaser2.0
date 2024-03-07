@@ -5,9 +5,7 @@ function CreateJobs(job) {
   return (
     <JobsCard
       key={job.id}
-      title={job.title}
       company={job.company}
-      content={job.content}
       img={job.logo}
       role={job.role}
       position={job.position}

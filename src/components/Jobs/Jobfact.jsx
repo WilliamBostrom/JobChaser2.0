@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function JobFact({ label, value }) {
   return (
     <div className="jobfact">
@@ -6,5 +8,10 @@ function JobFact({ label, value }) {
     </div>
   );
 }
+
+JobFact.propTypes = {
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+};
 
 export default JobFact;

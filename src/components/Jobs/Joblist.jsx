@@ -6,17 +6,24 @@ import JobFact from "./Jobfact";
 function JobsCard(props) {
   const [isMouseOver, setMouseOver] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [isDone, setDone] = useState(false);
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
-    setMouseOver(false); // Återställ färgen när du klickar på hjärtat
+    setMouseOver(false);
+  };
+
+  const handleApplication = () => {
+    setDone((prevValue) => {
+      return !prevValue;
+    });
   };
 
   return (
     <article className="joblist">
       <div>
         <h2>{props.company}</h2>
-        <Avatar img={props.img} alt={props.title} />
+        <Avatar img={props.img} alt={props.role} />
       </div>
       <div className="jobgrid">
         <div>
@@ -47,10 +54,16 @@ function JobsCard(props) {
         />
       </a>
       <div className="job-btns">
-        <button>Intresserad</button>
-        <button>Ansök</button>
-        <div className="jobstatus">
-          Status <span></span>
+        <button>Ta bort</button>
+        <button onClick={handleApplication}>Ansök</button>
+        <div
+          className="jobstatus"
+          style={{
+            background: isDone ? "green" : "",
+            color: isDone ? "white" : "",
+          }}
+        >
+          Status
         </div>
       </div>
       <p className="postedAt">{props.postedAt}</p>
@@ -60,9 +73,7 @@ function JobsCard(props) {
 
 JobsCard.propTypes = {
   company: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
   level: PropTypes.string.isRequired,
@@ -73,13 +84,3 @@ JobsCard.propTypes = {
 };
 
 export default JobsCard;
-
-/* className="job-like-btn"
-onMouseEnter={() => setMouseOver(true)}
-onClick={handleLikeClick}
-onMouseLeave={() => setMouseOver(false)}
->
-<img
-  src={isMouseOver || isLiked ? "/liked-heart.svg" : "/like-heart.svg"}
-  alt="Heart"
-/> */
