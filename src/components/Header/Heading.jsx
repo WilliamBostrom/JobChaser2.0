@@ -15,9 +15,9 @@ function Header() {
                 altText="Bevakning"
               />
               <Navbar
-                linkText="Sök"
+                linkText="Favoriter"
                 imagePath="https://jobb.blocket.se/img/favorite_grey.svg"
-                altText="Sparade"
+                altText="Favoriter"
               />
               <Navbar
                 linkText="Logga in"
