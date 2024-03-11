@@ -19,6 +19,10 @@ function JobsCard(props) {
     });
   };
 
+  const handleClick = () => {
+    props.handleRemoveJob(props.id);
+  };
+
   return (
     <article className="joblist">
       <div>
@@ -58,7 +62,7 @@ function JobsCard(props) {
         />
       </a>
       <div className="job-btns">
-        <button>Ta bort</button>
+        <button onClick={handleClick}>Ta bort</button>
         <button onClick={handleApplication}>Ansök</button>
         <div
           className="jobstatus"
@@ -86,7 +90,7 @@ JobsCard.propTypes = {
   tools: PropTypes.array.isRequired,
   postedAt: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  // onChecked: PropTypes.func.isRequired,
+  handleRemoveJob: PropTypes.func.isRequired,
 };
 
 export default JobsCard;
