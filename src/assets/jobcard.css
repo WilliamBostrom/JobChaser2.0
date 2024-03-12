@@ -80,3 +80,10 @@
   text-align: center;
   border: 1px solid black;
 }
+
+.job-description {
+  border-top: 1px solid grey;
+  grid-row: 3;
+  grid-column: span 3;
+  padding: 1rem 0.5rem;
+}

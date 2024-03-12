@@ -16,6 +16,7 @@ function CreateJobs() {
   }, [selectedLevel]);
 
   const handleSelectChange = (event) => {
+    event.preventDefault();
     setSelectedLevel(event.target.value);
   };
 
@@ -47,7 +48,7 @@ function CreateJobs() {
           location={job.location}
           languages={job.languages}
           tools={job.tools}
-          handleRemoveJob={handleRemoveJob} // Skicka med funktionen till JobsCard
+          handleRemoveJob={handleRemoveJob}
         />
       ))}
     </article>
