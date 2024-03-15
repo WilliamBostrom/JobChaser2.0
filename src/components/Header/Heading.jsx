@@ -1,11 +1,13 @@
 import Navbar from "./Nav";
-import Search from "./Search";
+// import Search from "./Search";
+import { useTheme } from "../hooks/useTheme";
 
 function Header() {
+  const { color, changeColor } = useTheme();
   return (
-    <header>
+    <header style={{ background: color }}>
       <div className="header">
-        <nav>
+        <nav onClick={() => changeColor("pink")}>
           <div className="nav-container">
             <h1>JobChaser</h1>
             <div>
@@ -28,7 +30,7 @@ function Header() {
           </div>
         </nav>
       </div>
-      <Search />
+      {/* <Search /> */}
     </header>
   );
 }

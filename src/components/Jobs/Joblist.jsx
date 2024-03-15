@@ -107,3 +107,5 @@ JobsCard.propTypes = {
 };
 
 export default JobsCard;
+
+
