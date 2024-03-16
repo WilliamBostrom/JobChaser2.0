@@ -1,11 +1,11 @@
 .header {
   width: 100%;
   height: 6rem;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); */
 }
 
 header h1 {
-  color: black;
+  color: #fff;
 }
 
 .menu-item {
@@ -47,11 +47,8 @@ nav {
   color: #696766;
 }
 
-header section {
-  background-color: #e3e1df;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+header {
+  padding: 20px;
 }
 
 .joblistArticle form {

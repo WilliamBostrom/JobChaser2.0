@@ -7,7 +7,7 @@ function FetchJobs() {
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [page, setPage] = useState(1);
   const resultsPerPage = 100;
-  const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=javascript&limit=${resultsPerPage}`;
+  const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=bank&limit=${resultsPerPage}`;
 
   useEffect(() => {
     const url = `${apiUrl}&offset=${(page - 1) * resultsPerPage}`;
@@ -53,7 +53,7 @@ function FetchJobs() {
   return (
     <article className="joblistArticle">
       <Search onSearch={handleSearch} onSearchLoc={handleSearchCity} />
-      <div className="Job2"></div>
+      <div className="Job2">{filteredJobs.length}</div>
       {filteredJobs.length > 0 ? (
         filteredJobs.map((job, index) => (
           <JobsCard
@@ -73,7 +73,7 @@ function FetchJobs() {
           />
         ))
       ) : (
-        <p>No jobs found.</p>
+        <p>Inga jobb hittade.</p>
       )}
       <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button>
     </article>

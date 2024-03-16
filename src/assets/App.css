@@ -4,20 +4,21 @@
   box-sizing: border-box;
 }
 html {
-  font-family: "Montserrat", sans-serif;
   font-size: 62.5%;
 }
 body {
-  background: #eee;
+  font-family: Raleway, sans-serif;
+  margin: 0;
+  font-size: 1.4em;
+  background: #dfdfdf;
+  color: #333;
 }
-
 .app.dark {
   background: #333;
 }
 
 header h1 {
   color: #fff;
-  font-family: "McLaren", cursive;
   font-weight: 200;
 }
 

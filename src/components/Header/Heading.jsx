@@ -10,6 +10,7 @@ function Header() {
         <nav>
           <div className="nav-container">
             <h1>JobChaser</h1>
+
             <div>
               <Navbar
                 linkText="Bevakning"
@@ -30,7 +31,6 @@ function Header() {
           </div>
         </nav>
       </div>
-      {/* <Search /> */}
     </header>
   );
 }
