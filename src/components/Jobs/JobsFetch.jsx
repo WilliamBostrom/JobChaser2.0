@@ -6,6 +6,7 @@ function FetchJobs() {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [page, setPage] = useState(1);
+
   const resultsPerPage = 100;
   const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=bank&limit=${resultsPerPage}`;
 
@@ -52,30 +53,33 @@ function FetchJobs() {
 
   return (
     <article className="joblistArticle">
-      <Search onSearch={handleSearch} onSearchLoc={handleSearchCity} />
-      <div className="Job2">{filteredJobs.length}</div>
-      {filteredJobs.length > 0 ? (
-        filteredJobs.map((job, index) => (
-          <JobsCard
-            id={index}
-            key={job.id}
-            company={job.employer.name}
-            handleRemoveJob={handleRemoveJob}
-            position={job.headline}
-            img={job.logo_url}
-            role={job.occupation.label}
-            level={job.description.text}
-            postedAt={job.publication_date}
-            contract={job.employment_type.label}
-            location={job.workplace_address.municipality}
-            languages={job.salary_description}
-            tools={job.working_hours_type.label}
-          />
-        ))
-      ) : (
-        <p>Inga jobb hittade.</p>
-      )}
-      <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button>
+      <div className="container">
+        <Search onSearch={handleSearch} onSearchLoc={handleSearchCity} />
+        <ul>
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job, index) => (
+              <JobsCard
+                id={index}
+                key={job.id}
+                company={job.employer.name}
+                handleRemoveJob={handleRemoveJob}
+                position={job.headline}
+                img={job.logo_url}
+                role={job.occupation.label}
+                level={job.description.text}
+                postedAt={job.publication_date}
+                contract={job.employment_type.label}
+                location={job.workplace_address.municipality}
+                languages={job.salary_description}
+                tools={job.working_hours_type.label}
+              />
+            ))
+          ) : (
+            <p>Inga jobb hittade.</p>
+          )}
+        </ul>
+        <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button>
+      </div>
     </article>
   );
 }

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function JobFact({ label, value }) {
   return (
     <div className="jobfact">
-      <p>{label} </p>
+      {label && <p>{label} </p>}
       <p>{value}</p>
     </div>
   );

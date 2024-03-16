@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTheme } from "../hooks/useTheme";
 
 function Search({ onSearch }) {
   const [input, setInput] = useState("");
+  const { color } = useTheme();
 
   const handleChange = (value) => {
     setInput(value);
@@ -25,7 +27,7 @@ function Search({ onSearch }) {
           onChange={(e) => handleChange(e.target.value)}
         />
 
-        <input type="submit" value="Sök" />
+        <input type="submit" value="Sök" style={{ background: color }} />
       </form>
     </section>
   );

@@ -1,21 +1,13 @@
 .joblistArticle {
   max-width: 800px;
   margin: 10px auto;
-  /* background-color: white; */
-  /* padding: 3px; */
 }
-.job2 {
-  content: "";
-  margin: 20px 0;
-  line-height: 1;
-  height: 0;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: rgba(0, 0, 0, 0.85);
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  font-size: 1rem;
+
+.joblistArticle .container {
+  width: 920px;
+  background-color: rgba(174, 175, 174, 0.063);
+  border-radius: 7px;
+  padding: 20px;
 }
 
 .joblist {
@@ -27,20 +19,33 @@
   margin: 10px auto;
   display: grid;
   grid-template-columns: 0.3fr 1fr auto;
-  grid-row: 1fr 0.5fr;
+  grid-row: 0.5fr 1fr 0.5fr;
   align-items: center;
+  transition: all 0.5s ease-in;
+  position: relative;
+  z-index: 1;
 }
 
+.company-name {
+  grid-row: 1;
+  grid-column: span 3;
+}
+
+.joblist-position {
+  font-weight: bold;
+}
+
+.job-description.dark,
 .joblist.dark {
   background: #555;
   color: #e4e4e4;
 }
 
 .job-btns {
-  grid-row: 2;
+  grid-row: 3;
   grid-column: span 2;
-  margin-top: -0.3rem;
-
+  margin-top: 0.3rem;
+  gap: 10px;
   list-style: none;
   display: flex;
   align-items: center;
@@ -52,8 +57,6 @@
   margin-bottom: 6px;
 }
 .joblist p {
-  font-size: 1.1em;
-  /* margin-bottom: 10px; */
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -61,6 +64,10 @@
 .jobgrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.jobgrid-first div .jobfact p:first-child {
+  font-weight: bold;
 }
 
 .jobstatus {
@@ -80,6 +87,10 @@
   cursor: pointer;
 }
 
+.job-btns button {
+  width: 130px;
+}
+
 .jobstatus {
   width: 80px;
   text-align: center;
@@ -87,8 +98,28 @@
 }
 
 .job-description {
-  border-top: 1px solid grey;
-  grid-row: 3;
-  grid-column: span 3;
-  padding: 1rem 0.5rem;
+  padding: 10px;
+  position: relative;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 1;
+    transform: translateY(-30%);
+    z-index: -1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.job-description {
+  background: #fff;
+  border-radius: 7px;
+  list-style: none;
+  box-shadow: 0 2px 5px #ccc;
+
+  animation: slideDown 0.9s forwards;
+  z-index: 0;
 }

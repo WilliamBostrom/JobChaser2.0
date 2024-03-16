@@ -28,68 +28,76 @@ function JobsCard(props) {
   };
 
   return (
-    <div className={`joblist ${mode}`}>
-      <div>
-        <h2>{props.company}</h2>
-        <Avatar
-          img={props.img ? props.img : "/exempelbild.png"}
-          alt={props.role}
-        />
-      </div>
-      <div className="jobgrid">
+    <>
+      <li className={`joblist ${mode}`}>
+        <div className="company-name">
+          <h2>{props.position}</h2>
+        </div>
         <div>
+          <Avatar
+            img={props.img ? props.img : "/exempelbild.png"}
+            alt={props.role}
+          />
+        </div>
+        <div className="jobgrid">
           <div>
+            <JobFact
+              label=""
+              value={props.company}
+              className="joblist-position"
+            />
             <JobFact label="" value={props.role} />
-            <JobFact label="" value={props.position} />
           </div>
-        </div>
-        <div>
-          {props.location && <JobFact label="Plats:" value={props.location} />}
           <div>
-            {props.languages && (
-              <JobFact label="Lön:" value={props.languages} />
+            {props.location && (
+              <JobFact label="Plats:" value={props.location} />
             )}
-            <JobFact label="Tjänst:" value={props.tools} />
+            <div>
+              {props.languages && (
+                <JobFact label="Lön:" value={props.languages} />
+              )}
+              <JobFact label="Tjänst:" value={props.tools} />
+            </div>
           </div>
         </div>
-      </div>
 
-      <a
-        className="job-like-btn"
-        onMouseEnter={() => setMouseOver(true)}
-        onClick={handleLikeClick}
-        onMouseLeave={() => setMouseOver(false)}
-      >
-        <img
-          src={
-            isMouseOver || isLiked ? "/heart_hover.svg" : "/heart_default.svg"
-          }
-          alt="Heart"
-        />
-      </a>
-      <div className="job-btns">
-        <button onClick={handleClick}>Ta bort</button>
-        <button onClick={handleApplication}>Ansök</button>
-        <button onClick={() => setReadmore(!readmore)}>
-          {readmore ? "Läs mindre" : "Läs mer"}
-        </button>
-        <div
-          className="jobstatus"
-          style={{
-            background: isDone ? "green" : "",
-            color: isDone ? "white" : "",
-          }}
+        <a
+          className="job-like-btn"
+          onMouseEnter={() => setMouseOver(true)}
+          onClick={handleLikeClick}
+          onMouseLeave={() => setMouseOver(false)}
         >
-          Status
+          <img
+            src={
+              isMouseOver || isLiked ? "/heart_hover.svg" : "/heart_default.svg"
+            }
+            alt="Heart"
+          />
+        </a>
+        <div className="job-btns">
+          <button onClick={handleClick}>Ta bort</button>
+          <button onClick={handleApplication}>Ansök</button>
+          <button onClick={() => setReadmore(!readmore)}>
+            {readmore ? "Läs mindre" : "Läs mer"}
+          </button>
+          <div
+            className="jobstatus"
+            style={{
+              background: isDone ? "green" : "",
+              color: isDone ? "white" : "",
+            }}
+          >
+            Status
+          </div>
         </div>
-      </div>
-      <p className="postedAt">{props.postedAt.slice(0, 10)}</p>
+        <p className="postedAt">{props.postedAt.slice(0, 10)}</p>
+      </li>
       {readmore && (
-        <div className="job-description">
+        <li className={`job-description ${mode}`}>
           <JobFact label={""} value={props.level} />
-        </div>
+        </li>
       )}
-    </div>
+    </>
   );
 }
 
