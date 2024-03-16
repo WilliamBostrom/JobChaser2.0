@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import JobsCard from "./Joblist.jsx";
 import Search from "../Header/Search.jsx";
+import { useFetch } from "../hooks/useFetch.jsx";
 
 function FetchJobs() {
   const [jobs, setJobs] = useState([]);
@@ -10,17 +11,14 @@ function FetchJobs() {
   const resultsPerPage = 100;
   const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=bank&limit=${resultsPerPage}`;
 
+  const { data } = useFetch(apiUrl);
+
   useEffect(() => {
-    const url = `${apiUrl}&offset=${(page - 1) * resultsPerPage}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setJobs(data.hits);
-        setFilteredJobs(data.hits);
-      })
-      .catch((err) => console.log(err));
-  }, [page]);
+    if (data) {
+      setJobs(data.hits);
+      setFilteredJobs(data.hits);
+    }
+  }, [data]);
 
   const handleRemoveJob = (id) => {
     setFilteredJobs((prevJobs) => {
@@ -55,29 +53,33 @@ function FetchJobs() {
     <article className="joblistArticle">
       <div className="container">
         <Search onSearch={handleSearch} onSearchLoc={handleSearchCity} />
-        <ul>
-          {filteredJobs.length > 0 ? (
-            filteredJobs.map((job, index) => (
-              <JobsCard
-                id={index}
-                key={job.id}
-                company={job.employer.name}
-                handleRemoveJob={handleRemoveJob}
-                position={job.headline}
-                img={job.logo_url}
-                role={job.occupation.label}
-                level={job.description.text}
-                postedAt={job.publication_date}
-                contract={job.employment_type.label}
-                location={job.workplace_address.municipality}
-                languages={job.salary_description}
-                tools={job.working_hours_type.label}
-              />
-            ))
-          ) : (
-            <p>Inga jobb hittade.</p>
-          )}
-        </ul>
+        {data ? (
+          <ul>
+            {filteredJobs.length > 0 ? (
+              filteredJobs.map((job, index) => (
+                <JobsCard
+                  id={index}
+                  key={job.id}
+                  company={job.employer.name}
+                  handleRemoveJob={handleRemoveJob}
+                  position={job.headline}
+                  img={job.logo_url}
+                  role={job.occupation.label}
+                  level={job.description.text}
+                  postedAt={job.publication_date}
+                  contract={job.employment_type.label}
+                  location={job.workplace_address.municipality}
+                  languages={job.salary_description}
+                  tools={job.working_hours_type.label}
+                />
+              ))
+            ) : (
+              <p>Inga jobb hittade.</p>
+            )}
+          </ul>
+        ) : (
+          <p>Laddar...</p>
+        )}
         <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button>
       </div>
     </article>
