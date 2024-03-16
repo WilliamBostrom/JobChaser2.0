@@ -3,6 +3,7 @@ import { useState } from "react";
 import Avatar from "../Utility/Avatar";
 import JobFact from "./Jobfact";
 import { useTheme } from "../hooks/useTheme";
+import { Link } from "react-router-dom";
 
 function JobsCard(props) {
   const [isMouseOver, setMouseOver] = useState(false);
@@ -80,6 +81,14 @@ function JobsCard(props) {
           <button onClick={() => setReadmore(!readmore)}>
             {readmore ? "Läs mindre" : "Läs mer"}
           </button>
+          <Link
+            to={`/jobb/${props.id}`}
+            onClick={() => {
+              console.log(props.id);
+            }}
+          >
+            Kolla in
+          </Link>
           <div
             className="jobstatus"
             style={{
@@ -111,7 +120,7 @@ JobsCard.propTypes = {
   languages: PropTypes.string,
   tools: PropTypes.string,
   postedAt: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   handleRemoveJob: PropTypes.func.isRequired,
 };
 

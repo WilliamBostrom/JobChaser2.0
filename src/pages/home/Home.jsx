@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import JobsCard from "./Joblist.jsx";
-import Search from "../Header/Search.jsx";
-import { useFetch } from "../hooks/useFetch.jsx";
+import JobsCard from "../../components/Jobs/Joblist";
+import { useFetch } from "../../components/hooks/useFetch";
+import Search from "../../components/Header/Search";
 
 function FetchJobs() {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [page, setPage] = useState(1);
+  const [searchText, setSearchText] = useState(""); // Lägg till searchText state
 
+  // Sätt query till antingen searchText eller "javascript" om searchText är tom
+  const query = searchText || "javascript";
   const resultsPerPage = 100;
-  const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=bank&limit=${resultsPerPage}`;
+  const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=${query}&limit=${resultsPerPage}`;
 
   const { data } = useFetch(apiUrl);
 
@@ -27,6 +30,7 @@ function FetchJobs() {
   };
 
   const handleSearch = (searchText) => {
+    setSearchText(searchText); // Uppdatera searchText när användaren söker
     const filtered = jobs.filter(
       (job) =>
         job.employer.name.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -37,6 +41,7 @@ function FetchJobs() {
   };
 
   const handleSearchCity = (searchText) => {
+    setSearchText(searchText);
     const filtered = jobs.filter(
       (job) =>
         job.employment_type.label
@@ -56,9 +61,9 @@ function FetchJobs() {
         {data ? (
           <ul>
             {filteredJobs.length > 0 ? (
-              filteredJobs.map((job, index) => (
+              filteredJobs.map((job) => (
                 <JobsCard
-                  id={index}
+                  id={job.id}
                   key={job.id}
                   company={job.employer.name}
                   handleRemoveJob={handleRemoveJob}

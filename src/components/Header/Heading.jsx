@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import Navbar from "./Nav";
-// import Search from "./Search";
 import { useTheme } from "../hooks/useTheme";
+import ThemeSelector from "../Utility/ThemeSelector";
 
 function Header() {
   const { color } = useTheme();
@@ -9,7 +10,9 @@ function Header() {
       <div className="header">
         <nav>
           <div className="nav-container">
-            <h1>JobChaser</h1>
+            <h1>
+              <Link to="/">JobChaser</Link>
+            </h1>
 
             <div>
               <Navbar
@@ -30,6 +33,7 @@ function Header() {
             </div>
           </div>
         </nav>
+        <ThemeSelector />
       </div>
     </header>
   );

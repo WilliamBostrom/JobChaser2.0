@@ -1,0 +1,28 @@
+.job-site {
+  max-width: 120rem;
+  margin: 4rem auto;
+  text-align: center;
+  background: #fff;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.job-site h1 {
+  margin-bottom: 24px;
+  font-size: 3.4rem;
+}
+
+.jobsite-about {
+  margin: 0 auto;
+  max-width: 64.8rem;
+}
+
+.jobsite-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.jobsite-textcontent {
+  margin-top: 2.4rem;
+}

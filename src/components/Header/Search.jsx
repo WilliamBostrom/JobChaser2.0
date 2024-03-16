@@ -22,7 +22,7 @@ function Search({ onSearch }) {
         <input
           type="text"
           id="whatinput"
-          placeholder="Frontend, backend"
+          placeholder="T.ex. javascript, tandläkare, bank m.m"
           value={input}
           onChange={(e) => handleChange(e.target.value)}
         />

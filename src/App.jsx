@@ -1,25 +1,40 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from "./components/Header/Heading.jsx";
 import Footer from "./components/Footer.jsx";
-// import DisplayCards from "./components/Jobs/Jobs.jsx";
-import FetchJobs from "./components/Jobs/JobsFetch.jsx";
+// import FetchJobs from "./components/Jobs/JobsFetch.jsx";
 
 import "./assets/App.css";
 import "./assets/utility/utility.css";
 import "./assets/jobcard.css";
-import ThemeSelector from "./components/Utility/ThemeSelector.jsx";
+
 import { useTheme } from "./components/hooks/useTheme.jsx";
-// import FetchJobs from "./components/Jobs/JobsFetch.jsx";
+import Home from "./pages/home/Home.jsx";
+import JobSite from "./pages/jobsite/JobSite.jsx";
 
 function App() {
   const { mode } = useTheme();
   return (
     <main className={`app ${mode}`}>
-      <Header />
-      <ThemeSelector />
-      <FetchJobs />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          {/* <Route path="/create" element={<Create />} /> */}
+
+          {/* <Route path="/search" element={<Search />} /> */}
+
+          <Route path="/jobb/:id" element={<JobSite />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </main>
   );
+}
+
+{
+  /* <FetchJobs />
+   */
 }
 
 export default App;
