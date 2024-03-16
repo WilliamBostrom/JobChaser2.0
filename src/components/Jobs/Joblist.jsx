@@ -62,9 +62,7 @@ function JobsCard(props) {
       >
         <img
           src={
-            isMouseOver || isLiked
-              ? "https://jobb.blocket.se/img/huge_heart_hover.svg"
-              : "https://jobb.blocket.se/img/huge_heart_default.svg"
+            isMouseOver || isLiked ? "/heart_hover.svg" : "/heart_default.svg"
           }
           alt="Heart"
         />

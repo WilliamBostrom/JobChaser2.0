@@ -14,17 +14,17 @@ function Header() {
             <div>
               <Navbar
                 linkText="Bevakning"
-                imagePath="https://jobb.blocket.se/img/alert_grey.svg"
+                imagePath="/alert_grey.svg"
                 altText="Bevakning"
               />
               <Navbar
                 linkText="Favoriter"
-                imagePath="https://jobb.blocket.se/img/favorite_grey.svg"
+                imagePath="/favorite_grey.svg"
                 altText="Favoriter"
               />
               <Navbar
                 linkText="Logga in"
-                imagePath="https://jobb.blocket.se/img/login_regular.svg"
+                imagePath="/login_regular.svg"
                 altText="Login"
               />
             </div>
