@@ -31,6 +31,11 @@
   align-items: center;
 }
 
+.joblist.dark {
+  background: #555;
+  color: #e4e4e4;
+}
+
 .job-btns {
   grid-row: 2;
   grid-column: span 2;

@@ -5,10 +5,12 @@ import Search from "../Header/Search.jsx";
 function FetchJobs() {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const apiUrl = "https://jobsearch.api.jobtechdev.se/search?q=javascript";
+  const [page, setPage] = useState(1);
+  const resultsPerPage = 100;
+  const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=javascript&limit=${resultsPerPage}`;
 
   useEffect(() => {
-    const url = `${apiUrl}`;
+    const url = `${apiUrl}&offset=${(page - 1) * resultsPerPage}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -17,7 +19,7 @@ function FetchJobs() {
         setFilteredJobs(data.hits);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [page]);
 
   const handleRemoveJob = (id) => {
     setFilteredJobs((prevJobs) => {
@@ -35,7 +37,7 @@ function FetchJobs() {
     setFilteredJobs(filtered);
   };
 
-  const handelSearchCity = (searchText) => {
+  const handleSearchCity = (searchText) => {
     const filtered = jobs.filter(
       (job) =>
         job.employment_type.label
@@ -50,7 +52,7 @@ function FetchJobs() {
 
   return (
     <article className="joblistArticle">
-      <Search onSearch={handleSearch} onSearchLoc={handelSearchCity} />
+      <Search onSearch={handleSearch} onSearchLoc={handleSearchCity} />
       <div className="Job2"></div>
       {filteredJobs.length > 0 ? (
         filteredJobs.map((job, index) => (
@@ -73,6 +75,7 @@ function FetchJobs() {
       ) : (
         <p>No jobs found.</p>
       )}
+      <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button>
     </article>
   );
 }

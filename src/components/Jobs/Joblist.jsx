@@ -2,12 +2,15 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import Avatar from "../Utility/Avatar";
 import JobFact from "./Jobfact";
+import { useTheme } from "../hooks/useTheme";
 
 function JobsCard(props) {
   const [isMouseOver, setMouseOver] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isDone, setDone] = useState(false);
   const [readmore, setReadmore] = useState(false);
+
+  const { mode } = useTheme();
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
@@ -25,7 +28,7 @@ function JobsCard(props) {
   };
 
   return (
-    <article className="joblist">
+    <div className={`joblist ${mode}`}>
       <div>
         <h2>{props.company}</h2>
         <Avatar
@@ -88,7 +91,7 @@ function JobsCard(props) {
           <JobFact label={""} value={props.level} />
         </div>
       )}
-    </article>
+    </div>
   );
 }
 
@@ -107,5 +110,3 @@ JobsCard.propTypes = {
 };
 
 export default JobsCard;
-
-

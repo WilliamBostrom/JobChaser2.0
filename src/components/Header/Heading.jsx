@@ -3,11 +3,11 @@ import Navbar from "./Nav";
 import { useTheme } from "../hooks/useTheme";
 
 function Header() {
-  const { color, changeColor } = useTheme();
+  const { color } = useTheme();
   return (
     <header style={{ background: color }}>
       <div className="header">
-        <nav onClick={() => changeColor("pink")}>
+        <nav>
           <div className="nav-container">
             <h1>JobChaser</h1>
             <div>

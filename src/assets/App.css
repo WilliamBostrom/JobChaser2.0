@@ -11,6 +11,10 @@ body {
   background: #eee;
 }
 
+.app.dark {
+  background: #333;
+}
+
 header h1 {
   color: #fff;
   font-family: "McLaren", cursive;

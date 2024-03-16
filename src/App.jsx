@@ -6,12 +6,16 @@ import FetchJobs from "./components/Jobs/JobsFetch.jsx";
 import "./assets/App.css";
 import "./assets/utility/utility.css";
 import "./assets/jobcard.css";
+import ThemeSelector from "./components/Utility/ThemeSelector.jsx";
+import { useTheme } from "./components/hooks/useTheme.jsx";
 // import FetchJobs from "./components/Jobs/JobsFetch.jsx";
 
 function App() {
+  const { mode } = useTheme();
   return (
-    <main>
+    <main className={`app ${mode}`}>
       <Header />
+      <ThemeSelector />
       <FetchJobs />
       <Footer />
     </main>
