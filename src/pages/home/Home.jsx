@@ -7,9 +7,7 @@ function FetchJobs() {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [page, setPage] = useState(1);
-  const [searchText, setSearchText] = useState(""); // Lägg till searchText state
-
-  // Sätt query till antingen searchText eller "javascript" om searchText är tom
+  const [searchText, setSearchText] = useState("");
   const query = searchText || "javascript";
   const resultsPerPage = 100;
   const apiUrl = `https://jobsearch.api.jobtechdev.se/search?q=${query}&limit=${resultsPerPage}`;
@@ -30,7 +28,7 @@ function FetchJobs() {
   };
 
   const handleSearch = (searchText) => {
-    setSearchText(searchText); // Uppdatera searchText när användaren söker
+    setSearchText(searchText);
     const filtered = jobs.filter(
       (job) =>
         job.employer.name.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -61,8 +59,9 @@ function FetchJobs() {
         {data ? (
           <ul>
             {filteredJobs.length > 0 ? (
-              filteredJobs.map((job) => (
+              filteredJobs.map((job, index) => (
                 <JobsCard
+                  num={index}
                   id={job.id}
                   key={job.id}
                   company={job.employer.name}

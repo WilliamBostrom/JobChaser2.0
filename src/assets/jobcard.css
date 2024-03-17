@@ -88,8 +88,22 @@
   cursor: pointer;
 }
 
-.job-btns button {
+.job-btns button,
+.job-btns .btn {
+  text-decoration: none;
   width: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background: #fff;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.job-btns button:hover,
+.job-btns .btn:hover {
+  background: #e4e4e4;
 }
 
 .jobstatus {

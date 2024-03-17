@@ -6,6 +6,9 @@
   padding: 40px;
   box-sizing: border-box;
   text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 316px;
+  gap: 1rem;
 }
 
 .job-site h1 {
@@ -25,4 +28,70 @@
 
 .jobsite-textcontent {
   margin-top: 2.4rem;
+}
+
+/* höger sida */
+/* .jobsite-connect {
+  border: 1px solid black;
+} */
+.jobsite-connect .img-center {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #e1dfde;
+  border-radius: 6px;
+  min-height: 120px;
+}
+.jobsite-connect img {
+  width: 70%;
+}
+
+.jobsite-text-btns {
+  margin-top: 24px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.jobsite-connect .save-now,
+.jobsite-connect .apply-now {
+  margin-top: 12px;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 60%;
+  padding: 14px 20px;
+  font-size: 1.8rem;
+  border-radius: 6px;
+  height: 5rem;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  border-width: 1px;
+  border-style: solid;
+  text-decoration: none;
+}
+
+.jobsite-connect .apply-now img {
+  width: 1.8rem;
+  margin-left: 0.5rem;
+}
+
+.jobsite-connect .save-now img {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.jobsite-connect .save-now {
+  width: 35%;
+  background: white;
+  color: #333;
 }

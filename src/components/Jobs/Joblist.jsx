@@ -9,7 +9,7 @@ function JobsCard(props) {
   const [isMouseOver, setMouseOver] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isDone, setDone] = useState(false);
-  const [readmore, setReadmore] = useState(false);
+  // const [readmore, setReadmore] = useState(false);
 
   const { mode } = useTheme();
 
@@ -18,14 +18,8 @@ function JobsCard(props) {
     setMouseOver(false);
   };
 
-  const handleApplication = () => {
-    setDone((prevValue) => {
-      return !prevValue;
-    });
-  };
-
   const handleClick = () => {
-    props.handleRemoveJob(props.id);
+    props.handleRemoveJob(props.num);
   };
 
   return (
@@ -77,17 +71,15 @@ function JobsCard(props) {
         </a>
         <div className="job-btns">
           <button onClick={handleClick}>Ta bort</button>
-          <button onClick={handleApplication}>Ansök</button>
-          <button onClick={() => setReadmore(!readmore)}>
-            {readmore ? "Läs mindre" : "Läs mer"}
-          </button>
+
           <Link
+            className="btn"
             to={`/jobb/${props.id}`}
             onClick={() => {
               console.log(props.id);
             }}
           >
-            Kolla in
+            Läs mer
           </Link>
           <div
             className="jobstatus"
@@ -101,11 +93,6 @@ function JobsCard(props) {
         </div>
         <p className="postedAt">{props.postedAt.slice(0, 10)}</p>
       </li>
-      {readmore && (
-        <li className={`job-description ${mode}`}>
-          <JobFact label={""} value={props.level} />
-        </li>
-      )}
     </>
   );
 }
@@ -114,8 +101,9 @@ JobsCard.propTypes = {
   company: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   img: PropTypes.string,
+  num: PropTypes.number,
   position: PropTypes.string.isRequired,
-  level: PropTypes.string.isRequired,
+  level: PropTypes.string,
   location: PropTypes.string,
   languages: PropTypes.string,
   tools: PropTypes.string,

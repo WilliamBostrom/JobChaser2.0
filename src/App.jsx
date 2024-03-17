@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header/Heading.jsx";
 import Footer from "./components/Footer.jsx";
-// import FetchJobs from "./components/Jobs/JobsFetch.jsx";
 
 import "./assets/App.css";
 import "./assets/utility/utility.css";

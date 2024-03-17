@@ -10,8 +10,8 @@ function JobFact({ label, value }) {
 }
 
 JobFact.propTypes = {
-  label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  value: PropTypes.string,
 };
 
 export default JobFact;
