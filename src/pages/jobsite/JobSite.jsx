@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../components/hooks/useFetch";
 import { useEffect, useState } from "react";
 import { useTheme } from "../../components/hooks/useTheme";
@@ -15,6 +15,7 @@ function JobSite() {
 
   const { data: job } = useFetch(url);
 
+  console.log(job);
   useEffect(() => {
     if (job) {
       const publicationDate = new Date();
@@ -30,6 +31,8 @@ function JobSite() {
     const options = { day: "numeric", month: "long", year: "numeric" };
     return new Date(dateString).toLocaleDateString("sv-SE", options);
   };
+
+  const link = "http";
 
   return (
     <div className="job-site">
@@ -92,15 +95,20 @@ function JobSite() {
             {` (${daysUntilDeadline} dagar kvar)`}
           </p>
           <div className="button-container">
-            <a
-              href="{job.hits[0].webpage_url}"
+            <Link
+              to={
+                job && job.hits[0].website_url
+                  ? job.hits[0].webpage_url
+                  : "https://arbetsformedlingen.se"
+              }
               target="_blank"
               style={{ background: color }}
               className="apply-now"
             >
               Ansök nu
-              <img src="/link.svg" alt="" />
-            </a>
+              <img src="/link.svg" alt="link img" />
+            </Link>
+
             <button className="save-now">
               <img src="/heart2.svg" />
               Spara
@@ -113,47 +121,3 @@ function JobSite() {
 }
 
 export default JobSite;
-
-/* 
-<div className="jobsite-connect">
-<div className="img-center">
-  <img
-    src={
-      job && job.hits[0].logo_url
-        ? job.hits[0].logo_url
-        : "/exempelbild.png"
-    }
-    alt={job && job.hits[0].headline}
-  />
-</div>
-<div className="jobsite-text-btns">
-  <h3>Sök jobbet</h3>
-  <p>Ansök senast</p>
-  <p>
-    <strong>
-      {job && formatDeadlineDate(job.hits[0].application_deadline)}
-    </strong>
-    {` (${daysUntilDeadline} dagar kvar)`}
-  </p>
-  <div className="button-container">
-    <a
-      href={job.hits[0].webpage_url}
-      target="_blank"
-      style={{ background: color }}
-      className="apply-now"
-    >
-      Ansök nu
-      <img src="/link.svg" alt="" />
-    </a>
-    <button className="save-now">
-      <img src="/heart2.svg" />
-      Spara
-    </button>
-  </div>
-</div>
-</div>
-</div>
-);
-}
-
-export default JobSite; */

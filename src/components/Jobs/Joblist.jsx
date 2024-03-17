@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 function JobsCard(props) {
   const [isMouseOver, setMouseOver] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  const [isDone, setDone] = useState(false);
-  // const [readmore, setReadmore] = useState(false);
 
   const { mode } = useTheme();
 
@@ -84,11 +82,11 @@ function JobsCard(props) {
           <div
             className="jobstatus"
             style={{
-              background: isDone ? "green" : "",
-              color: isDone ? "white" : "",
+              background: isLiked ? "green" : "",
+              color: isLiked ? "white" : "",
             }}
           >
-            Status
+            {isLiked ? "Favorit" : "Status"}
           </div>
         </div>
         <p className="postedAt">{props.postedAt.slice(0, 10)}</p>

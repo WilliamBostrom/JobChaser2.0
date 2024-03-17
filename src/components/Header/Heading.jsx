@@ -15,21 +15,24 @@ function Header() {
             </h1>
 
             <div>
-              <Navbar
+              {/*     <Navbar
                 linkText="Bevakning"
                 imagePath="/alert_grey.svg"
                 altText="Bevakning"
-              />
+              /> */}
               <Navbar
                 linkText="Favoriter"
                 imagePath="/favorite_grey.svg"
                 altText="Favoriter"
               />
-              <Navbar
-                linkText="Logga in"
-                imagePath="/login_regular.svg"
-                altText="Login"
-              />
+              <Link to="/login">
+                {" "}
+                <Navbar
+                  linkText="Logga in"
+                  imagePath="/login_regular.svg"
+                  altText="Login"
+                />
+              </Link>
             </div>
           </div>
         </nav>
