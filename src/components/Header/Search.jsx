@@ -22,11 +22,11 @@ function Search({ onSearch }) {
         <input
           type="text"
           id="whatinput"
-          placeholder="T.ex. javascript, tandläkare, bank m.m"
+          placeholder="Jobbtitle, yrke, företag m.m"
           value={input}
           onChange={(e) => handleChange(e.target.value)}
         />
-
+        <img src="/search.svg" alt="search" />
         <input type="submit" value="Sök" style={{ background: color }} />
       </form>
     </section>

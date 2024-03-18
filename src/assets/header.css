@@ -8,6 +8,11 @@ header h1 a {
   text-decoration: none;
 }
 
+header h1 {
+  color: #fff;
+  font-weight: 200;
+}
+
 .menu-item {
   display: flex;
   flex-direction: column;
@@ -47,15 +52,19 @@ nav {
 }
 
 header {
-  padding: 20px;
+  padding: 8px;
+}
+.joblistArticle .container section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .joblistArticle form {
   padding: 0.8rem 0;
-  width: 800px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
 .joblistArticle form input {
@@ -81,18 +90,14 @@ header {
   border-radius: 6px 0 0 6px;
   min-height: 2.5rem;
   width: 35rem;
-  padding-right: 2px;
+  padding-left: 2.4rem;
   border: 1px solid #bebcbb;
-}
-
-header form input:focus {
   outline: none;
 }
 
-#whereinput {
-  min-height: 2.5rem;
-  width: 35rem;
-  padding-right: 2px;
-  border: 1px solid #bebcbb;
-  border-left: 4px solid #bebcbb;
+.joblistArticle form img {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

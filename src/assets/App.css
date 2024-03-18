@@ -22,11 +22,15 @@ body {
 }
 .app.dark {
   background: #333;
+  color: #fff;
 }
 
-header h1 {
-  color: #fff;
-  font-weight: 200;
+.app.dark .job-site {
+  color: #333;
+}
+
+a {
+  text-decoration: none;
 }
 
 footer {
