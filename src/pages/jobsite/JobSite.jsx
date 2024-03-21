@@ -32,8 +32,6 @@ function JobSite() {
     return new Date(dateString).toLocaleDateString("sv-SE", options);
   };
 
-  const link = "http";
-
   return (
     <div className="job-site">
       {job && (
@@ -66,7 +64,9 @@ function JobSite() {
               <p>{job.hits[0].working_hours_type.label}</p>
             </div>
           </div>
+
           <div
+            style={{ whiteSpace: "pre-line" }}
             className="jobsite-textcontent"
             dangerouslySetInnerHTML={{
               __html: job.hits[0].description.text_formatted,

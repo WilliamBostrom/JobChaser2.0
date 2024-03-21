@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTheme } from "../../components/hooks/useTheme";
+import { Link } from "react-router-dom";
 
 //styles
 import styles from "./Login.module.css";
@@ -41,6 +42,7 @@ function Login() {
         />
       </label>
       <button className={styles.btn}>Logga in</button>
+      <Link to="/signup">Bli medlem</Link>
     </form>
   );
 }

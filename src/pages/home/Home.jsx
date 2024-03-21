@@ -6,7 +6,7 @@ import Search from "../../components/Header/Search";
 function FetchJobs() {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState("");
   const query = searchText || "javascript";
   const resultsPerPage = 100;
@@ -38,7 +38,7 @@ function FetchJobs() {
     setFilteredJobs(filtered);
   };
 
-  const handleSearchCity = (searchText) => {
+  /*   const handleSearchCity = (searchText) => {
     setSearchText(searchText);
     const filtered = jobs.filter(
       (job) =>
@@ -50,12 +50,12 @@ function FetchJobs() {
           .includes(searchText.toLowerCase())
     );
     setFilteredJobs(filtered);
-  };
+  }; */
 
   return (
     <article className="joblistArticle">
       <div className="container">
-        <Search onSearch={handleSearch} onSearchLoc={handleSearchCity} />
+        <Search onSearch={handleSearch} />
         {data ? (
           <ul>
             {filteredJobs.length > 0 ? (
@@ -84,7 +84,7 @@ function FetchJobs() {
         ) : (
           <p>Laddar...</p>
         )}
-        <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button>
+        {/*   <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button> */}
       </div>
     </article>
   );
