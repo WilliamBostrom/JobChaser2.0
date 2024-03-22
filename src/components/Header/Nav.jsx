@@ -2,10 +2,10 @@ import PropTypes from "prop-types";
 
 function Navbar({ linkText, imagePath, altText }) {
   return (
-    <a className="menu-item" href="#">
+    <div className="menu-item" href="#">
       <img src={imagePath} alt={altText} />
       <span className="menu-title">{linkText}</span>
-    </a>
+    </div>
   );
 }
 Navbar.propTypes = {

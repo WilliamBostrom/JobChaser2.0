@@ -34,3 +34,22 @@
   background: #fff;
   color: #333;
 }
+
+.login-form .btns-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form a {
+  color: white;
+  margin: 10px auto;
+}
+.login-form a:hover {
+  text-decoration: underline;
+}
+
+.login-form h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

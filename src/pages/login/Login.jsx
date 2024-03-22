@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { useTheme } from "../../components/hooks/useTheme";
 import { Link } from "react-router-dom";
-
 //styles
 import styles from "./Login.module.css";
+import { useLogin } from "../../components/hooks/useLogin";
 
 function Login() {
   const { color } = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { error, login } = useLogin();
 
   const handleSubmit = (e) => {
-    e.preventDefaul();
+    e.preventDefault();
 
-    console.log(email, password);
+    login(email, password);
   };
 
   return (
@@ -41,8 +42,12 @@ function Login() {
           autoComplete="password"
         />
       </label>
-      <button className={styles.btn}>Logga in</button>
-      <Link to="/signup">Bli medlem</Link>
+      <div className={styles["btns-login"]}>
+        <button className={styles.btn}>Logga in</button>
+        {error && <p>{error}</p>}
+
+        <Link to="/signup">Bli medlem</Link>
+      </div>
     </form>
   );
 }

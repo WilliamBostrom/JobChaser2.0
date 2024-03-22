@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import Navbar from "./Nav";
 import { useTheme } from "../hooks/useTheme";
 import ThemeSelector from "../Utility/ThemeSelector";
+import { useLogout } from "../hooks/useLogout";
 
 function Header() {
   const { color } = useTheme();
+  const { logout } = useLogout();
   return (
     <header style={{ background: color }}>
       <div className="header">
@@ -28,6 +30,7 @@ function Header() {
                   altText="Login"
                 />
               </Link>
+              <button onClick={logout}>log out</button>
             </div>
           </div>
         </nav>

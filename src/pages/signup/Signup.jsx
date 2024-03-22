@@ -1,19 +1,20 @@
 import { useState } from "react";
-// import { useSignup } from "../hooks/useSignup";
 
 import { useTheme } from "../../components/hooks/useTheme";
 import styles from "./Signup.module.css";
+import { Link } from "react-router-dom";
+import { useSignup } from "../../components/hooks/useSignup";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { color } = useTheme();
 
-  // const { error, signup } = useSignup();
+  const { error, signup } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // signup(email, password);
+    signup(email, password);
   };
 
   return (
@@ -43,8 +44,13 @@ export default function Signup() {
             value={password}
           />
         </label>
-        <button className={styles.btn}>Bli medlem</button>
-        {/* {error && <p>{error}</p>} */}
+
+        <div className={styles["btns-login"]}>
+          <button className={styles.btn}>Bli medlem</button>
+          <Link to="/login">Redan medlem? Logga in!</Link>
+        </div>
+
+        {error && <p>{error}</p>}
       </form>
     </div>
   );
