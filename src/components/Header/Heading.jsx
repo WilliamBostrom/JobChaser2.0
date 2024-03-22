@@ -3,10 +3,12 @@ import Navbar from "./Nav";
 import { useTheme } from "../hooks/useTheme";
 import ThemeSelector from "../Utility/ThemeSelector";
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function Header() {
   const { color } = useTheme();
   const { logout } = useLogout();
+  const { user } = useAuthContext();
   return (
     <header style={{ background: color }}>
       <div className="header">
@@ -17,20 +19,33 @@ function Header() {
             </h1>
 
             <div>
-              <Navbar
-                linkText="Favoriter"
-                imagePath="/favorite_grey.svg"
-                altText="Favoriter"
-              />
-              <Link to="/login">
-                {" "}
+              {user && (
                 <Navbar
-                  linkText="Logga in"
-                  imagePath="/login_regular.svg"
-                  altText="Login"
+                  linkText="Favoriter"
+                  imagePath="/favorite_grey.svg"
+                  altText="Favoriter"
                 />
-              </Link>
-              <button onClick={logout}>log out</button>
+              )}
+              {!user && (
+                <Link to="/login">
+                  {" "}
+                  <Navbar
+                    linkText="Logga in"
+                    imagePath="/login_regular.svg"
+                    altText="Login"
+                  />
+                </Link>
+              )}
+
+              {user && (
+                <div onClick={logout}>
+                  <Navbar
+                    linkText="Logga ut"
+                    imagePath="/login_regular.svg"
+                    altText="Login"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </nav>

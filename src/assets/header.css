@@ -43,6 +43,11 @@ nav {
   width: 2.4rem;
   height: 2.4rem;
 }
+.menu-item img {
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+}
 
 .menu-title {
   color: #f3f3f3;
