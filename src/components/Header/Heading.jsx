@@ -19,13 +19,13 @@ function Header() {
             </h1>
 
             <div>
-              {user && (
+              {/*     {user && (
                 <Navbar
                   linkText="Favoriter"
                   imagePath="/favorite_grey.svg"
                   altText="Favoriter"
                 />
-              )}
+              )} */}
               {!user && (
                 <Link to="/login">
                   {" "}
