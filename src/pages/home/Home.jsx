@@ -6,7 +6,6 @@ import Search from "../../components/Header/Search";
 function FetchJobs() {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
-  // const [page, setPage] = useState(1);
   const [searchText, setSearchText] = useState("");
   const query = searchText || "javascript";
   const resultsPerPage = 100;
@@ -37,20 +36,6 @@ function FetchJobs() {
     );
     setFilteredJobs(filtered);
   };
-
-  /*   const handleSearchCity = (searchText) => {
-    setSearchText(searchText);
-    const filtered = jobs.filter(
-      (job) =>
-        job.employment_type.label
-          .toLowerCase()
-          .includes(searchText.toLowerCase()) ||
-        job.workplace_address.municipality
-          .toLowerCase()
-          .includes(searchText.toLowerCase())
-    );
-    setFilteredJobs(filtered);
-  }; */
 
   return (
     <article className="joblistArticle">
@@ -84,7 +69,6 @@ function FetchJobs() {
         ) : (
           <p>Laddar...</p>
         )}
-        {/*   <button onClick={() => setPage(page + 1)}>Hämta fler jobb</button> */}
       </div>
     </article>
   );
