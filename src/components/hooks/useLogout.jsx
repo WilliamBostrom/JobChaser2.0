@@ -10,7 +10,6 @@ export const useLogout = () => {
       .then(() => {
         console.log("utloggad");
         dispatch({ type: "LOGOUT" });
-        // window.location.reload();
       })
       .catch((err) => {
         console.log(err.message);

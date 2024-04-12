@@ -5,7 +5,7 @@ interface Props {
   onSearch: (value: string) => void;
 }
 
-function Search({ onSearch }: Props): JSX.Element {
+export default function Search({ onSearch }: Props): JSX.Element {
   const [input, setInput] = useState<string>("");
   const { color } = useTheme();
 
