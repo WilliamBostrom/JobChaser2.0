@@ -1,21 +1,37 @@
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useFetch } from "../../components/hooks/useFetch";
-import { useEffect, useState } from "react";
 import { useTheme } from "../../components/hooks/useTheme";
 
 // styles
 import "./JobSite.css";
 
-function JobSite() {
-  const { id } = useParams();
-  const [daysUntilDeadline, setDaysUntilDeadline] = useState(null);
+interface Job {
+  hits: {
+    headline: string;
+    employer: { name: string };
+    publication_date: string;
+    workplace_address: { municipality: string };
+    occupation: { label: string };
+    working_hours_type: { label: string };
+    description: { text_formatted: string };
+    logo_url?: string;
+    application_deadline: string;
+    website_url?: string;
+  }[];
+}
+
+function JobSite(): JSX.Element {
+  const { id } = useParams<{ id: string }>();
+  const [daysUntilDeadline, setDaysUntilDeadline] = useState<number | null>(
+    null
+  );
   const { color } = useTheme();
 
   const url = `https://jobsearch.api.jobtechdev.se/search?q=${id}`;
 
   const { data: job } = useFetch(url);
 
-  console.log(job);
   useEffect(() => {
     if (job) {
       const publicationDate = new Date();
@@ -27,8 +43,12 @@ function JobSite() {
     }
   }, [job]);
 
-  const formatDeadlineDate = (dateString) => {
-    const options = { day: "numeric", month: "long", year: "numeric" };
+  const formatDeadlineDate = (dateString: string): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    };
     return new Date(dateString).toLocaleDateString("sv-SE", options);
   };
 
@@ -110,7 +130,7 @@ function JobSite() {
             </Link>
 
             <button className="save-now">
-              <img src="/heart2.svg" />
+              <img src="/heart2.svg" alt="heart" />
               Spara
             </button>
           </div>
@@ -121,4 +141,3 @@ function JobSite() {
 }
 
 export default JobSite;
-

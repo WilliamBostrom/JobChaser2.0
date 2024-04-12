@@ -1,18 +1,17 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
 import { useTheme } from "../../components/hooks/useTheme";
 import styles from "./Signup.module.css";
 import { Link } from "react-router-dom";
 import { useSignup } from "../../components/hooks/useSignup";
 
-export default function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Signup: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { color } = useTheme();
 
   const { error, signup } = useSignup();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     signup(email, password);
   };
@@ -46,7 +45,9 @@ export default function Signup() {
         </label>
 
         <div className={styles["btns-login"]}>
-          <button className={styles.btn}>Bli medlem</button>
+          <button type="submit" className={styles.btn}>
+            Bli medlem
+          </button>
           <Link to="/login">Redan medlem? Logga in!</Link>
         </div>
 
@@ -54,4 +55,6 @@ export default function Signup() {
       </form>
     </div>
   );
-}
+};
+
+export default Signup;
