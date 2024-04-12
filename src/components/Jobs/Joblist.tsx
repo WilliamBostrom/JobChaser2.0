@@ -1,15 +1,47 @@
-// @ts-nocheck
-
-import PropTypes from "prop-types";
-import { useState } from "react";
-import Avatar from "../Utility/Avatar";
-import JobFact from "./Jobfact";
+import React, { useState } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { Link } from "react-router-dom";
 
-function JobsCard(props) {
-  const [isMouseOver, setMouseOver] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+interface AvatarProps {
+  img: string;
+}
+
+interface JobFactProps {
+  label: string;
+  value: string;
+}
+
+interface JobsCardProps {
+  num: number;
+  id: string;
+  company: string;
+  position: string;
+  img?: string;
+  role: string;
+  location?: string;
+  languages?: string;
+  contract: string;
+  tools: string;
+  postedAt: string;
+  handleRemoveJob: (num: number) => void;
+}
+
+function Avatar({ img }: AvatarProps): JSX.Element {
+  return <img className="circle-img" src={img} alt="avatar_img" />;
+}
+
+function JobFact({ label, value }: JobFactProps): JSX.Element {
+  return (
+    <div className="jobfact">
+      {label && <p>{label} </p>}
+      <p>{value}</p>
+    </div>
+  );
+}
+
+function JobsCard(props: JobsCardProps): JSX.Element {
+  const [isMouseOver, setMouseOver] = useState<boolean>(false);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const { mode } = useTheme();
 
@@ -29,10 +61,7 @@ function JobsCard(props) {
           <h2>{props.position}</h2>
         </div>
         <div>
-          <Avatar
-            img={props.img ? props.img : "/exempelbild.png"}
-            alt={props.role}
-          />
+          <Avatar img={props.img ? props.img : "/exempelbild.png"} />
         </div>
         <div className="jobgrid">
           <div>
@@ -96,20 +125,5 @@ function JobsCard(props) {
     </>
   );
 }
-
-JobsCard.propTypes = {
-  company: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  img: PropTypes.string,
-  num: PropTypes.number,
-  position: PropTypes.string.isRequired,
-  level: PropTypes.string,
-  location: PropTypes.string,
-  languages: PropTypes.string,
-  tools: PropTypes.string,
-  postedAt: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  handleRemoveJob: PropTypes.func.isRequired,
-};
 
 export default JobsCard;

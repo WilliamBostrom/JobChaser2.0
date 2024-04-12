@@ -80,7 +80,6 @@ function FetchJobs() {
                   position={job.headline}
                   img={job.logo_url}
                   role={job.occupation.label}
-                  level={job.description.text}
                   postedAt={job.publication_date}
                   contract={job.employment_type.label}
                   location={job.workplace_address.municipality}
