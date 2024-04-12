@@ -1,13 +1,14 @@
+import React from "react";
 import { useTheme } from "../hooks/useTheme";
 
 import "./ThemeSelector.css";
 
-const themeColors = ["#58249c", "#249c6b", "#b70233"];
+const themeColors: string[] = ["#58249c", "#249c6b", "#b70233"];
 
-function ThemeSelector() {
+function ThemeSelector(): JSX.Element {
   const { changeColor, changeMode, mode } = useTheme();
 
-  function toggleMode() {
+  function toggleMode(): void {
     changeMode(mode === "dark" ? "light" : "dark");
   }
 

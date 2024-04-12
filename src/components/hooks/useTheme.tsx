@@ -1,7 +1,14 @@
 import { useContext } from "react";
 import { ThemeContext } from "../Context/ThemeContext";
 
-export const useTheme = () => {
+interface ThemeContextType {
+  color: string;
+  mode: string;
+  changeColor: (color: string) => void;
+  changeMode: (mode: string) => void;
+}
+
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
 
   if (context === undefined) {
