@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createContext, useReducer, useEffect } from "react";
 import { auth } from "../firebase/config";
 import { onAuthStateChanged } from "firebase/auth";
