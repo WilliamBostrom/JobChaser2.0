@@ -1,17 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTheme } from "../../components/hooks/useTheme";
 import { Link } from "react-router-dom";
-//styles
 import styles from "./Login.module.css";
 import { useLogin } from "../../components/hooks/useLogin";
 
 function Login() {
   const { color } = useTheme();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const { error, login } = useLogin();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     login(email, password);
@@ -39,11 +38,13 @@ function Login() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          autoComplete="password"
+          autoComplete="current-password"
         />
       </label>
       <div className={styles["btns-login"]}>
-        <button className={styles.btn}>Logga in</button>
+        <button type="submit" className={styles.btn}>
+          Logga in
+        </button>
         {error && <p>{error}</p>}
 
         <Link to="/signup">Bli medlem</Link>

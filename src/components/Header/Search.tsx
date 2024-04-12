@@ -1,18 +1,21 @@
 import { useState } from "react";
 import { useTheme } from "../hooks/useTheme";
 
-function Search({ onSearch }) {
-  const [input, setInput] = useState("");
+interface Props {
+  onSearch: (value: string) => void;
+}
+
+export default function Search({ onSearch }: Props): JSX.Element {
+  const [input, setInput] = useState<string>("");
   const { color } = useTheme();
 
-  const handleChange = (value) => {
+  const handleChange = (value: string) => {
     setInput(value);
     onSearch(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     onSearch(input);
   };
 
@@ -32,5 +35,3 @@ function Search({ onSearch }) {
     </section>
   );
 }
-
-export default Search;
