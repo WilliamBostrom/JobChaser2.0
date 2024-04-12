@@ -65,11 +65,7 @@ function JobsCard(props: JobsCardProps): JSX.Element {
         </div>
         <div className="jobgrid">
           <div>
-            <JobFact
-              label=""
-              value={props.company}
-              className="joblist-position"
-            />
+            <JobFact label="" value={props.company} />
             <JobFact label="" value={props.role} />
           </div>
           <div>
