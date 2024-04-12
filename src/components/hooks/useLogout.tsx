@@ -1,11 +1,15 @@
 import { auth } from "../firebase/config";
 import { signOut } from "firebase/auth";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useAuthContext } from "./useAuthContext";
 
-export const useLogout = () => {
+interface LogoutReturnType {
+  logout: () => void;
+}
+
+export const useLogout = (): LogoutReturnType => {
   const { dispatch } = useAuthContext();
 
-  const logout = () => {
+  const logout = (): void => {
     signOut(auth)
       .then(() => {
         console.log("utloggad");

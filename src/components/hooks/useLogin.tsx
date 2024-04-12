@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-//fireb
+import { useAuthContext } from "./useAuthContext";
 import { auth } from "../firebase/config";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-export const useLogin = () => {
-  const [error, setError] = useState(null);
+interface LoginReturnType {
+  error: string | null;
+  login: (email: string, password: string) => void;
+}
+
+export const useLogin = (): LoginReturnType => {
+  const [error, setError] = useState<string | null>(null);
   const { dispatch } = useAuthContext();
 
-  const login = (email, password) => {
+  const login = (email: string, password: string): void => {
     setError(null);
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
