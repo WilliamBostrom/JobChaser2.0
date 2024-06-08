@@ -23,3 +23,10 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+.login-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 10px;
+}

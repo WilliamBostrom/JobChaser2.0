@@ -19,7 +19,8 @@ function Header(): JSX.Element {
               <Link to="/">JobChaser</Link>
             </h1>
 
-            <div>
+            <div className="login-btns">
+              {user && <Link to="favoriter">Sparade jobb</Link>}
               {!user && (
                 <Link to="/login">
                   <Navbar

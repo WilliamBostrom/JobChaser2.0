@@ -14,6 +14,7 @@ import Home from "./pages/home/Home.jsx";
 import JobSite from "./pages/jobsite/JobSite.jsx";
 import Login from "./pages/login/Login.jsx";
 import Signup from "./pages/signup/Signup.jsx";
+import SavedJobs from "./pages/savedjobs/SavedJobs.jsx";
 import { useAuthContext } from "./components/hooks/useAuthContext.jsx";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
               path="/jobb/:id"
               element={user ? <JobSite /> : <Navigate to="login" />}
             />
+            <Route path="/favoriter" element={<SavedJobs />} />
           </Routes>
           <Footer />
         </BrowserRouter>
